@@ -1,13 +1,18 @@
-plugins:
-  - '@semantic-release/github'
-  - '@semantic-release/release-notes-generator'
-  - '@semantic-release/commit-analyzer'
-  - - '@semantic-release/changelog'
-    - changelogFile: 'Assets/Object Pooler/CHANGELOG.md'
-  - - '@semantic-release/npm'
-    - npmPublish: false,
-      pkgRoot: 'Assets/Object Pooler'
-  - - '@semantic-release/git'
-    - assets:
-      - 'Assets/Object Pooler/package.json'
-      - 'Assets/Object Pooler/CHANGELOG.md'
+{
+    "plugins": [
+        "@semantic-release/github",
+        "@semantic-release/release-notes-generator", 
+        "@semantic-release/commit-analyzer",
+        ["@semantic-release/changelog", {
+            "changelogFile": "Assets/Object Pooler/CHANGELOG.md",
+        }],
+        ["@semantic-release/npm", {
+            "npmPublish": false,
+            "pkgRoot": "Assets/Object Pooler"
+        }],
+        ["@semantic-release/git", {
+            "assets": ["Assets/Object Pooler/package.json", "Assets/Object Pooler/CHANGELOG.md"],
+            "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+        }],
+    ]
+}
