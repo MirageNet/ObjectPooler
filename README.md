@@ -3,7 +3,7 @@
 [![Build](https://github.com/MirageNet/ObjectPooler/workflows/CI/badge.svg)](https://github.com/MirageNet/ObjectPooler/actions?query=workflow%3ACI)
 [![GitHub issues](https://img.shields.io/github/issues/MirageNet/ObjectPooler.svg)](https://github.com/MirageNet/ObjectPooler/issues)
 ![GitHub last commit](https://img.shields.io/github/last-commit/MirageNet/ObjectPooler.svg) ![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)
-[![openupm](https://img.shields.io/npm/v/com.miragenet.ObjectPooler?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.miragenet.ObjectPooler/)
+[![openupm](https://img.shields.io/npm/v/com.miragenet.objectpooler?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.miragenet.objectpooler/)
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ObjectPooler&metric=alert_status)](https://sonarcloud.io/dashboard?id=ObjectPooler)
 [![SonarCloud Coverage](https://sonarcloud.io/api/project_badges/measure?project=ObjectPooler&metric=coverage)](https://sonarcloud.io/component_measures?id=ObjectPooler&metric=coverage)
