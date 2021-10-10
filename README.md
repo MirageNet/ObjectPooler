@@ -17,7 +17,7 @@ If you are using unity 2019.3 or later:
 2) Install [Mirage](https://github.com/MirageNet/Mirage)
 3) Click on Windows -> Package Manager
 4) Click on the plus sign on the left and click on "Add package from git URL..."
-5) enter https://github.com/MirageNet/ObjectPooler.git?path=/Assets/Object Pooler
+5) enter https://github.com/MirageNet/ObjectPooler.git?path=/Assets/Object_Pooler
 6) Unity will download and install ObjectPooler
 7) Make sure .NET 4.X set for compiler level.
 
