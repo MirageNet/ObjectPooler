@@ -1,7 +1,7 @@
 name: CI
 #on:
 #  pull_request: {}
-#  push: { branches: [master] }
+#  push: { branches: [main] }
 
 on: 
   push:
@@ -77,4 +77,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate Solution
-        run: unity-editor -nographics -logFile /dev/stdout -customBuildName BlackBox -projectPath . -executeMethod  UnityEditor.SyncVS.SyncSolution -quit
+        run: unity-editor -nographics -logFile /dev/stdout -customBuildName ObjectPooler -projectPath . -executeMethod  UnityEditor.SyncVS.SyncSolution -quit
