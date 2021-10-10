@@ -1,0 +1,1 @@
+This plugin is designed to allow users to object pool client side and server side objects. We can object pool network objects or even local objects depanding on the call that is made.
