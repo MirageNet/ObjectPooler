@@ -32,6 +32,40 @@ Client side will now start object pooling for anything that is called using Serv
 
 ### [Advance Usage]
 
+#### [Server]
+
+if you want to pool on server you can call specific commands to do so. Command below will instiante and auto spawn the object for you and return back to you
+the object if you want to do further things with it. You need to pass in a position and rotation and the mirage assetid from the prefab.
+
+`
+ObjectPoolingManager.NetworkSpawnPool(Vector3.zero, Quaternion.identity, prefab.AssetId);
+`
+
+if you want to unspawn from server you can call this command. You need to pass in the object you want to unspawn. Also whether this is being called on server
+or not on client. If you are inside of a networkbehaviour simply using isServer there will work best.
+
+`
+ObjectPoolingManager.NetworkSpawnPool(objectSpawned, true);
+`
+
+#### [Client]
+
+if you need to do any client side rpc and also want to be able to still pool while say calling an rpc and show off a particle effect you can
+call these commands to spawn and pool or unspawn back to pool using local methods of pooling manager. There are few overloads to use.
+
+The reason I designed this using T is because this will allow pooler to dump back to pooling system regardless of type. The only gotcha with local
+spawning of objects you must specific the correct T type or else things will break.
+
+`
+ObjectPoolingManager.LocalSpawnPool<Sprite>(objectSpawned, Vector3.zero, Quaternion.identity);
+
+ObjectPoolingManager.LocalSpawnPool(objectToSpawn, transform, true);
+`
+
+`
+ObjectPoolingManager.LocalUnSpawnObject(spawnedObject)
+`
+
 ## Contributing
 
 There are several ways to contribute to this project:
