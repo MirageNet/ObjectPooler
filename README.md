@@ -58,12 +58,11 @@ spawning of objects you must specific the correct T type or else things will bre
 
 `
 ObjectPoolingManager.LocalSpawnPool<Sprite>(objectSpawned, Vector3.zero, Quaternion.identity);
-
 ObjectPoolingManager.LocalSpawnPool(objectToSpawn, transform, true);
 `
 
 `
-ObjectPoolingManager.LocalUnSpawnObject(spawnedObject)
+ObjectPoolingManager.LocalUnSpawnObject(spawnedObject);
 `
 
 ## Contributing
