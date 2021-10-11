@@ -136,8 +136,7 @@ namespace Object_Pooler
         /// </summary>
         /// <param name="objectSpawned">The object we want to set in active and despawn.</param>
         /// <param name="isServer">Whether or not this is server telling us to unspawn object.</param>
-        /// <param name="isEnemy">Whether or not this is an enemy being despawn-ed.</param>
-        public void NetworkUnSpawnObject(NetworkIdentity objectSpawned, bool isServer, bool isEnemy)
+        public void NetworkUnSpawnObject(NetworkIdentity objectSpawned, bool isServer)
         {
             UnSpawnObject(objectSpawned);
 
