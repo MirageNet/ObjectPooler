@@ -25,12 +25,12 @@ If you are using unity 2019.3 or later:
 
 ## Usages
 
-# [Standard Usage]
+### [Standard Usage]
 
 Attach ObjectPoolingManager script to network object where all other mirage components are. Once attached nothing else will need to be done. 
 Client side will now start object pooling for anything that is called using ServerObjectManager.Spawn();
 
-# [Advance Usage]
+### [Advance Usage]
 
 ## Contributing
 
