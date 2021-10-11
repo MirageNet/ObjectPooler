@@ -21,6 +21,12 @@ If you are using unity 2019.3 or later:
 6) Unity will download and install ObjectPooler
 7) Make sure .NET 4.X set for compiler level.
 
+## Usages
+
+[Standard Usage]
+Attach ObjectPoolingManager script to network object where all other mirage components are. Once attached nothing else will need to be done. 
+Client side will now start object pooling for anything that is called using ServerObjectManager.Spawn();
+
 ## Contributing
 
 There are several ways to contribute to this project:
