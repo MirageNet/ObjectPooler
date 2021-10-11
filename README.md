@@ -5,12 +5,6 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/MirageNet/ObjectPooler.svg) ![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)
 [![openupm](https://img.shields.io/npm/v/com.miragenet.objectpooler?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.miragenet.objectpooler/)
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ObjectPooler&metric=alert_status)](https://sonarcloud.io/dashboard?id=ObjectPooler)
-[![SonarCloud Coverage](https://sonarcloud.io/api/project_badges/measure?project=ObjectPooler&metric=coverage)](https://sonarcloud.io/component_measures?id=ObjectPooler&metric=coverage)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=ObjectPooler&metric=ncloc)](https://sonarcloud.io/dashboard?id=ObjectPooler)
-[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=ObjectPooler&metric=sqale_index)](https://sonarcloud.io/dashboard?id=ObjectPooler)
-[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=ObjectPooler&metric=code_smells)](https://sonarcloud.io/dashboard?id=ObjectPooler)
-
 ## Installation
 
 If you are using unity 2019.3 or later: 
