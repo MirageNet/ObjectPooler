@@ -22,7 +22,9 @@ namespace Object_Pooler
 
         private void Start()
         {
-            _parent = new GameObject { name = nameof(ObjectPoolingManager) };
+            _parent = new GameObject { name = "Pooled Objects" };
+            DontDestroyOnLoad(_parent);
+
             _serverObjectManager = FindObjectOfType<ServerObjectManager>();
 
             ClientObjectManager clientObject = FindObjectOfType<ClientObjectManager>();
