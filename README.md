@@ -11,6 +11,8 @@
 [![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=ObjectPooler&metric=sqale_index)](https://sonarcloud.io/dashboard?id=ObjectPooler)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=ObjectPooler&metric=code_smells)](https://sonarcloud.io/dashboard?id=ObjectPooler)
 
+## Installation
+
 If you are using unity 2019.3 or later: 
 
 1) Open your project in unity
@@ -23,9 +25,12 @@ If you are using unity 2019.3 or later:
 
 ## Usages
 
-[Standard Usage]
+# [Standard Usage]
+
 Attach ObjectPoolingManager script to network object where all other mirage components are. Once attached nothing else will need to be done. 
 Client side will now start object pooling for anything that is called using ServerObjectManager.Spawn();
+
+# [Advance Usage]
 
 ## Contributing
 
