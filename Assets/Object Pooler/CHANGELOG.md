@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/MirageNet/ObjectPooler/compare/v1.0.1...v1.0.2) (2021-10-11)
+
+
+### Bug Fixes
+
+* Needed to add dontdestroyonload to newly create object pooler ([bbc1222](https://github.com/MirageNet/ObjectPooler/commit/bbc12220dbc7abfae011d5ef812d2f0794afca66))
+
 ## [1.0.1](https://github.com/MirageNet/ObjectPooler/compare/v1.0.0...v1.0.1) (2021-10-11)
 
 
