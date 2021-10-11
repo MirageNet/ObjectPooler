@@ -11,23 +11,20 @@ namespace Object_Pooler
         #region Fields
 
         private readonly Dictionary<int, object> _recycledObjects = new Dictionary<int, object>();
-        private readonly ServerObjectManager _serverObjectManager;
-        internal readonly GameObject Parent;
-        internal readonly Dictionary<Guid, NetworkIdentity> _objectsAssetIds = new Dictionary<Guid, NetworkIdentity>();
+        private ServerObjectManager _serverObjectManager;
+        private GameObject _parent;
+        private readonly Dictionary<Guid, NetworkIdentity> _objectsAssetIds = new Dictionary<Guid, NetworkIdentity>();
 
 
         #endregion
-
-        public ObjectPoolingManager(ServerObjectManager serverObjectManager)
-        {
-            _serverObjectManager = serverObjectManager;
-            Parent = new GameObject { name = nameof(ObjectPoolingManager) };
-        }
 
         #region Unity Methods
 
         private void Start()
         {
+            _parent = new GameObject { name = nameof(ObjectPoolingManager) };
+            _serverObjectManager = FindObjectOfType<ServerObjectManager>();
+
             ClientObjectManager clientObject = FindObjectOfType<ClientObjectManager>();
 
             if (clientObject == null) return;
@@ -122,7 +119,7 @@ namespace Object_Pooler
                     ? (ObjectPooling<NetworkIdentity>)_recycledObjects[prefabId]
                     : default).NetworkSpawn(position, rotation);
 
-            var createParent = new GameObject(_objectsAssetIds[AssetId].name) { transform = { parent = Parent.transform } };
+            var createParent = new GameObject(_objectsAssetIds[AssetId].name) { transform = { parent = _parent.transform } };
 
             _recycledObjects[prefabId] = new ObjectPooling<NetworkIdentity>(_objectsAssetIds[AssetId], quantity, createParent);
 
@@ -173,7 +170,7 @@ namespace Object_Pooler
                     ? (ObjectPooling<T>)_recycledObjects[prefabId]
                     : default).Spawn(position, rotation);
 
-            var createParent = new GameObject(gObject.name) { transform = { parent = Parent.transform } };
+            var createParent = new GameObject(gObject.name) { transform = { parent = _parent.transform } };
 
             _recycledObjects[prefabId] = new ObjectPooling<T>(gObject, quantity, createParent);
 
@@ -200,7 +197,7 @@ namespace Object_Pooler
                     ? (ObjectPooling<T>)_recycledObjects[prefabId]
                     : default).Spawn(parentTransform, worldStayPosition);
 
-            var createParent = new GameObject(gObject.name) { transform = { parent = Parent.transform } };
+            var createParent = new GameObject(gObject.name) { transform = { parent = _parent.transform } };
 
             _recycledObjects[prefabId] = new ObjectPooling<T>(gObject, quantity, createParent);
 
