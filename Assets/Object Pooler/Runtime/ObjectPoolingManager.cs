@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
@@ -13,7 +12,7 @@ namespace Object_Pooler
         private readonly Dictionary<int, object> _recycledObjects = new Dictionary<int, object>();
         private ServerObjectManager _serverObjectManager;
         private GameObject _parent;
-        private readonly Dictionary<Guid, NetworkIdentity> _objectsAssetIds = new Dictionary<Guid, NetworkIdentity>();
+        private readonly Dictionary<int?, NetworkIdentity> _objectsAssetIds = new Dictionary<int?, NetworkIdentity>();
 
 
         #endregion
@@ -33,9 +32,9 @@ namespace Object_Pooler
 
             foreach (NetworkIdentity g in clientObject.spawnPrefabs)
             {
-                clientObject.RegisterSpawnHandler(g.AssetId, SpawnObject, UnSpawnObject);
+                clientObject.RegisterSpawnHandler(g.PrefabHash, SpawnObject, UnSpawnObject);
 
-                _objectsAssetIds.Add(g.AssetId, g);
+                _objectsAssetIds.Add(g.PrefabHash, g);
             }
         }
 
@@ -50,7 +49,7 @@ namespace Object_Pooler
         /// <returns>Return back the network identity of the object needing soawning.</returns>
         internal NetworkIdentity SpawnObject(SpawnMessage msg)
         {
-            NetworkIdentity spawnedObject = NetworkSpawnPool(msg.position, Quaternion.identity, msg.assetId, 1);
+            NetworkIdentity spawnedObject = NetworkSpawnPool(msg.position, Quaternion.identity, msg.prefabHash, 1);
 
             // Active the pooled object.
             spawnedObject.gameObject.SetActive(true);
@@ -112,7 +111,7 @@ namespace Object_Pooler
         /// <param name="AssetId">The asset id of the object from <see cref="NetworkIdentity" /> to use to spawn object of.</param>
         /// <param name="quantity">How many pooled objects we want to create of this object. If we don't have a pool started.</param>
         /// <returns></returns>
-        public NetworkIdentity NetworkSpawnPool(Vector3 position, Quaternion rotation, Guid AssetId, int quantity = 3)
+        public NetworkIdentity NetworkSpawnPool(Vector3 position, Quaternion rotation, int? AssetId, int quantity = 3)
         {
             int prefabId = _objectsAssetIds[AssetId].gameObject.GetInstanceID();
 
