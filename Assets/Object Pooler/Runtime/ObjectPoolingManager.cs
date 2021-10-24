@@ -1,7 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
+#if MIRAGE
 using Mirage;
+#else
+using Mirror;
+using System;
+#endif
 
 namespace Object_Pooler
 {
@@ -9,10 +14,14 @@ namespace Object_Pooler
     {
         #region Fields
 
-        private readonly Dictionary<int, object> _recycledObjects = new Dictionary<int, object>();
+#if MIRAGE
         private ServerObjectManager _serverObjectManager;
-        private GameObject _parent;
         private readonly Dictionary<int?, NetworkIdentity> _objectsAssetIds = new Dictionary<int?, NetworkIdentity>();
+#else
+        private readonly Dictionary<Guid, NetworkIdentity> _objectsAssetIds = new Dictionary<Guid, NetworkIdentity>();
+#endif
+        private readonly Dictionary<int, object> _recycledObjects = new Dictionary<int, object>();
+        private GameObject _parent;
 
 
         #endregion
@@ -23,7 +32,7 @@ namespace Object_Pooler
         {
             _parent = new GameObject { name = "Pooled Objects" };
             DontDestroyOnLoad(_parent);
-
+#if MIRAGE
             _serverObjectManager = FindObjectOfType<ServerObjectManager>();
 
             ClientObjectManager clientObject = FindObjectOfType<ClientObjectManager>();
@@ -36,26 +45,52 @@ namespace Object_Pooler
 
                 _objectsAssetIds.Add(g.PrefabHash, g);
             }
+#else
+            foreach (KeyValuePair<Guid, GameObject> g in NetworkClient.prefabs)
+            {
+                NetworkClient.RegisterSpawnHandler(g.Key, SpawnObject, UnSpawnObject);
+
+                _objectsAssetIds.Add(g.Key, g.Value.GetComponent<NetworkIdentity>());
+            }
+#endif
         }
 
         #endregion
 
         #region Custom Spawn Handlers
 
+#if MIRAGE
         /// <summary>
         ///     Spawn handler for all network spawning of things.
         /// </summary>
         /// <param name="msg">The message incoming from spawn handler.</param>
         /// <returns>Return back the network identity of the object needing soawning.</returns>
         internal NetworkIdentity SpawnObject(SpawnMessage msg)
+#else
+        /// <summary>
+        ///     Spawn handler for all network spawning of things.
+        /// </summary>
+        /// <param name="position">The position which to spawn the object.</param>
+        /// <param name="assetId">the guid id of the asset prefab we want to spawn from</param>
+        /// <returns></returns>
+        internal GameObject SpawnObject(Vector3 position, Guid assetId)
+#endif
         {
+#if MIRAGE
             NetworkIdentity spawnedObject = NetworkSpawnPool(msg.position, Quaternion.identity, msg.prefabHash, 1);
+#else
+            NetworkIdentity spawnedObject = NetworkSpawnPool(position, Quaternion.identity, assetId, 1);
+#endif
 
             // Active the pooled object.
             spawnedObject.gameObject.SetActive(true);
 
             // return the game object back to mirage to have it finish spawning.
+#if MIRAGE
             return spawnedObject;
+#else
+            return spawnedObject.gameObject;
+#endif
         }
 
         /// <summary>
@@ -98,9 +133,9 @@ namespace Object_Pooler
             p.Despawn(spawned);
         }
 
-        #endregion
+#endregion
 
-        #region Network Spawning
+#region Network Spawning
 
         /// <summary>
         ///     Spawn an object using our pooled objects for the specific object
@@ -111,7 +146,11 @@ namespace Object_Pooler
         /// <param name="AssetId">The asset id of the object from <see cref="NetworkIdentity" /> to use to spawn object of.</param>
         /// <param name="quantity">How many pooled objects we want to create of this object. If we don't have a pool started.</param>
         /// <returns></returns>
+#if MIRAGE
         public NetworkIdentity NetworkSpawnPool(Vector3 position, Quaternion rotation, int? AssetId, int quantity = 3)
+#else
+        public NetworkIdentity NetworkSpawnPool(Vector3 position, Quaternion rotation, Guid AssetId, int quantity = 3)
+#endif
         {
             int prefabId = _objectsAssetIds[AssetId].gameObject.GetInstanceID();
 
@@ -139,16 +178,21 @@ namespace Object_Pooler
         {
             UnSpawnObject(objectSpawned);
 
+#if MIRAGE
             // If this is network server then tell rest of clients to unspawn object.
             if (_serverObjectManager == null || !isServer) return;
 
             // Unspawn object.
             _serverObjectManager.Destroy(objectSpawned.gameObject, false);
+#else
+            NetworkServer.Destroy(objectSpawned.gameObject);
+
+#endif
         }
 
-        #endregion
+#endregion
 
-        #region Local Spawning.
+#region Local Spawning.
 
         /// <summary>
         ///     Spawn an object using our pooled objects for the specific object
@@ -215,6 +259,6 @@ namespace Object_Pooler
             UnSpawnObject(objectSpawned);
         }
 
-        #endregion
+#endregion
     }
 }
