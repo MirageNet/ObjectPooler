@@ -1,6 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+#if MIRAGE
 using Mirage;
+#else
+using Mirror;
+#endif
 
 namespace Object_Pooler
 {
@@ -12,7 +16,7 @@ namespace Object_Pooler
 
     internal struct ObjectPooling<T> where T : Object
     {
-        #region Fields
+#region Fields
 
         private readonly Queue<PooledObject<T>> _inactiveGameObjects;
         private readonly T _objectPrefabToPool;
@@ -20,7 +24,7 @@ namespace Object_Pooler
         internal readonly HashSet<int> PooledObjectIDs;
         private readonly GameObject _parentBackObject;
 
-        #endregion
+#endregion
 
         /// <summary>
         ///     Constructor for this object pool.
@@ -52,7 +56,7 @@ namespace Object_Pooler
             _objectPrefabToPool = null;
         }
 
-        #region Network Pool Spawning
+#region Network Pool Spawning
 
         /// <summary>
         ///     Method to spawn network object from our inactive pool.
@@ -143,9 +147,9 @@ namespace Object_Pooler
             _inactiveGameObjects.Enqueue(recycle);
         }
 
-        #endregion
+#endregion
 
-        #region Normal Pool Spawning.
+#region Normal Pool Spawning.
 
         /// <summary>
         ///     Method to spawn an object from our inactive pool.
@@ -258,6 +262,6 @@ namespace Object_Pooler
             _inactiveGameObjects.Enqueue(recycle);
         }
 
-        #endregion
+#endregion
     }
 }

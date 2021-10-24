@@ -12,6 +12,12 @@
     "precompiledReferences": [],
     "autoReferenced": true,
     "defineConstraints": [],
-    "versionDefines": [],
+    "versionDefines": [
+        {
+            "name": "com.miragenet.mirage",
+            "expression": "",
+            "define": "MIRAGE"
+        }
+    ],
     "noEngineReferences": false
 }

@@ -2,16 +2,12 @@
     "name": "com.miragenet.objectpooler",
     "displayName": "Mirage Object Pooler",
     "version": "1.0.2",
-    "unity": "2021.1.23",
+    "unity": "2021.1",
     "description": "A plugin to handle object pooling locally and network in mirage.",
     "author": "Mirage",
-    "repository": {
+	 "repository": {
         "type": "git",
         "url": "https://github.com/MirageNet/ObjectPooler.git"
-    },
-    "dependencies": {
-        "com.miragenet.mirage": "107.0.0",
-        "com.cysharp.unitask": "2.2.5"
     },
     "samples": [
         {
