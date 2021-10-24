@@ -1,10 +1,14 @@
-using System.Collections.Generic;
-using UnityEngine;
+#region Statements
+
 #if MIRAGE
 using Mirage;
 #else
 using Mirror;
 #endif
+using System.Collections.Generic;
+using UnityEngine;
+
+#endregion
 
 namespace Object_Pooler
 {
@@ -16,7 +20,7 @@ namespace Object_Pooler
 
     internal struct ObjectPooling<T> where T : Object
     {
-#region Fields
+        #region Fields
 
         private readonly Queue<PooledObject<T>> _inactiveGameObjects;
         private readonly T _objectPrefabToPool;
@@ -24,7 +28,7 @@ namespace Object_Pooler
         internal readonly HashSet<int> PooledObjectIDs;
         private readonly GameObject _parentBackObject;
 
-#endregion
+        #endregion
 
         /// <summary>
         ///     Constructor for this object pool.
@@ -56,7 +60,7 @@ namespace Object_Pooler
             _objectPrefabToPool = null;
         }
 
-#region Network Pool Spawning
+        #region Network Pool Spawning
 
         /// <summary>
         ///     Method to spawn network object from our inactive pool.
@@ -82,7 +86,9 @@ namespace Object_Pooler
                         spawnedObject = _inactiveGameObjects.Dequeue().NetId;
 
                         if (spawnedObject is null)
+                        {
                             continue;
+                        }
 
                         break;
                 }
@@ -112,7 +118,9 @@ namespace Object_Pooler
                     spawnedObject = _inactiveGameObjects.Dequeue().NetId;
 
                     if (spawnedObject is null)
+                    {
                         continue;
+                    }
 
                     spawnedObject.transform.SetParent(parentTransform, worldStayPosition);
 
@@ -133,7 +141,10 @@ namespace Object_Pooler
         /// <param name="obj">The object we want to return back to the pool.</param>
         internal void Despawn(NetworkIdentity obj)
         {
-            if (!obj.gameObject.activeInHierarchy) return;
+            if (!obj.gameObject.activeInHierarchy)
+            {
+                return;
+            }
 
             obj.gameObject.SetActive(false);
 
@@ -147,9 +158,9 @@ namespace Object_Pooler
             _inactiveGameObjects.Enqueue(recycle);
         }
 
-#endregion
+        #endregion
 
-#region Normal Pool Spawning.
+        #region Normal Pool Spawning.
 
         /// <summary>
         ///     Method to spawn an object from our inactive pool.
@@ -175,7 +186,9 @@ namespace Object_Pooler
                         spawnedObject = _inactiveGameObjects.Dequeue().Object;
 
                         if (spawnedObject is null)
+                        {
                             continue;
+                        }
 
                         break;
                 }
@@ -205,7 +218,9 @@ namespace Object_Pooler
                     spawnedObject = _inactiveGameObjects.Dequeue().Object;
 
                     if (spawnedObject is null)
+                    {
                         continue;
+                    }
 
                     (spawnedObject as MonoBehaviour)?.transform.SetParent(parentTransform, worldStayPosition);
 
@@ -262,6 +277,6 @@ namespace Object_Pooler
             _inactiveGameObjects.Enqueue(recycle);
         }
 
-#endregion
+        #endregion
     }
 }

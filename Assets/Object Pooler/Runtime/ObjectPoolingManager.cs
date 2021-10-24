@@ -97,7 +97,11 @@ namespace Object_Pooler
         ///     Spawn handler for all network unspawning of things.
         /// </summary>
         /// <param name="spawned">What network identity we are going to unspawn and return back to network pool.</param>
+#if MIRAGE
         internal void UnSpawnObject(NetworkIdentity spawned)
+#else
+        internal void UnSpawnObject(GameObject spawned)
+#endif
         {
             ObjectPooling<NetworkIdentity> p = default;
 
@@ -109,8 +113,12 @@ namespace Object_Pooler
 
                 break;
             }
+#if MIRAGE
 
             p.Despawn(spawned);
+#else
+            p.Despawn(spawned.GetComponent<NetworkIdentity>());
+#endif
         }
 
         /// <summary>
