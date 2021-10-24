@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/MirageNet/ObjectPooler/compare/v1.0.2...v1.1.0) (2021-10-24)
+
+
+### Features
+
+* added mirror compatibility ([5a7a581](https://github.com/MirageNet/ObjectPooler/commit/5a7a5811322ece643ad489b13f227cf4d0337db7))
+* mirror compatibility ([bfea3e0](https://github.com/MirageNet/ObjectPooler/commit/bfea3e0580a59f0435a3cb017982a872c86c333b))
+* mirror comptability ([#4](https://github.com/MirageNet/ObjectPooler/issues/4)) ([96545f2](https://github.com/MirageNet/ObjectPooler/commit/96545f2d9181b72125ce69988c5a8739b745dd00))
+
 ## [1.0.2](https://github.com/MirageNet/ObjectPooler/compare/v1.0.1...v1.0.2) (2021-10-11)
 
 
