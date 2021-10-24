@@ -9,10 +9,6 @@
         "type": "git",
         "url": "https://github.com/MirageNet/ObjectPooler.git"
     },
-    "dependencies": {
-        "com.miragenet.mirage": "107.0.0",
-        "com.cysharp.unitask": "2.2.5"
-    },
     "samples": [
         {
             "displayName": "Example",
