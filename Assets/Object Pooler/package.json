@@ -7,7 +7,7 @@
     "author": "Mirage",
     "repository": {
         "type": "git",
-        "url": "https://github.com/MirageNet/Mirage.git"
+        "url": "https://github.com/MirageNet/ObjectPooler.git"
     },
     "dependencies": {
         "com.miragenet.mirage": "107.0.0",
