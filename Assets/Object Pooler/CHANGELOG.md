@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/MirageNet/ObjectPooler/compare/v1.1.0...v1.1.1) (2021-10-24)
+
+
+### Bug Fixes
+
+* missed fixing unspawn method for mirror ([#5](https://github.com/MirageNet/ObjectPooler/issues/5)) ([7f22a2a](https://github.com/MirageNet/ObjectPooler/commit/7f22a2aca49886c89f153c6e9ac5f55a7ab2e768))
+
 # [1.1.0](https://github.com/MirageNet/ObjectPooler/compare/v1.0.2...v1.1.0) (2021-10-24)
 
 
