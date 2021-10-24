@@ -10,7 +10,7 @@
 If you are using unity 2019.3 or later: 
 
 1) Open your project in unity
-2) Install [Mirage](https://github.com/MirageNet/Mirage) | [Mirror](https://github.com/vis2k/Mirror)
+2) Install [Mirage](https://github.com/MirageNet/Mirage) | [Mirror](https://assetstore.unity.com/packages/tools/network/mirror-129321)
 3) Click on Windows -> Package Manager
 4) Click on the plus sign on the left and click on "Add package from git URL..."
 5) enter https://github.com/MirageNet/ObjectPooler.git?path=/Assets/Object%20Pooler
