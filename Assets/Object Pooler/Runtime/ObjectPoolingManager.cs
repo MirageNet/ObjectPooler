@@ -185,14 +185,15 @@ namespace Object_Pooler
             // Unspawn object.
             _serverObjectManager.Destroy(objectSpawned.gameObject, false);
 #else
+            // Unspawn object.
             NetworkServer.Destroy(objectSpawned.gameObject);
 
 #endif
         }
 
-#endregion
+        #endregion
 
-#region Local Spawning.
+        #region Local Spawning.
 
         /// <summary>
         ///     Spawn an object using our pooled objects for the specific object
