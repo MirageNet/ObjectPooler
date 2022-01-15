@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/MirageNet/ObjectPooler/compare/v1.1.1...v1.1.2) (2022-01-15)
+
+
+### Bug Fixes
+
+* define for mirror ([08cb0da](https://github.com/MirageNet/ObjectPooler/commit/08cb0da109cf86a380405dafaf2b907a16cb7b05))
+
 ## [1.1.1](https://github.com/MirageNet/ObjectPooler/compare/v1.1.0...v1.1.1) (2021-10-24)
 
 
