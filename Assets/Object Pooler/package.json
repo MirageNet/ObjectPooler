@@ -4,7 +4,7 @@
     "version": "1.1.1",
     "unity": "2021.1",
     "description": "A plugin to handle object pooling locally and network in mirage.",
-    "author": "Mirage",
+    "author": "Dragonslaya",
     "repository": {
         "type": "git",
         "url": "https://github.com/MirageNet/ObjectPooler.git"
