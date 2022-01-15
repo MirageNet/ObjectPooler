@@ -1,6 +1,6 @@
 #region Statements
 
-#if MIRAGE
+#if !MIRROR
 using Mirage;
 #else
 using Mirror;
