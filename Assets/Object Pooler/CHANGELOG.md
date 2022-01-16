@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/MirageNet/ObjectPooler/compare/v1.1.2...v1.1.3) (2022-01-16)
+
+
+### Bug Fixes
+
+* fixed mirage define and fixed for new mirage version where james implemented nullable for position in spawn message. ([86db3c5](https://github.com/MirageNet/ObjectPooler/commit/86db3c53693bc66a45614215b94a97d4889f9d86))
+
 ## [1.1.2](https://github.com/MirageNet/ObjectPooler/compare/v1.1.1...v1.1.2) (2022-01-15)
 
 
