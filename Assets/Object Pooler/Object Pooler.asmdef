@@ -15,7 +15,7 @@
     "versionDefines": [
         {
             "name": "com.miragenet.mirage",
-            "expression": "",
+            "expression": "100.0.0",
             "define": "MIRAGE"
         }
     ],
