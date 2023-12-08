@@ -32,9 +32,9 @@ namespace Object_Pooler
             _parent = new GameObject { name = "Pooled Objects" };
             DontDestroyOnLoad(_parent);
 #if MIRAGE
-            _serverObjectManager = FindObjectOfType<ServerObjectManager>();
+            _serverObjectManager = FindFirstObjectByType<ServerObjectManager>();
 
-            ClientObjectManager clientObject = FindObjectOfType<ClientObjectManager>();
+            ClientObjectManager clientObject = FindFirstObjectByType<ClientObjectManager>();
 
             if (clientObject == null) return;
 
@@ -76,7 +76,7 @@ namespace Object_Pooler
 #endif
         {
 #if MIRAGE
-            NetworkIdentity spawnedObject = NetworkSpawnPool(msg.position ?? new Vector3(), Quaternion.identity, msg.prefabHash, 1);
+            NetworkIdentity spawnedObject = NetworkSpawnPool(msg.SpawnValues.Position ?? new Vector3(), Quaternion.identity, msg.PrefabHash, 1);
 #else
             NetworkIdentity spawnedObject = NetworkSpawnPool(position, Quaternion.identity, assetId, 1);
 #endif
